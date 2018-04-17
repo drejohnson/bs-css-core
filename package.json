@@ -9,11 +9,7 @@
     "start": "bsb -make-world -w",
     "test": "yarn build && jest"
   },
-  "keywords": [
-    "bucklescript",
-    "reason",
-    "css"
-  ],
+  "keywords": ["bucklescript", "reason", "css"],
   "author": "Jan Poeschko <jan@poeschko.com>",
   "contributors": [
     "Sentia (http://www.sentia.io)",
@@ -25,7 +21,7 @@
     "url": "git+https://github.com/astrada/bs-css-core.git"
   },
   "devDependencies": {
-    "bs-jest": "^0.2.0",
-    "bs-platform": "^2.1.0"
+    "bs-jest": "^0.3.2",
+    "bs-platform": "^3.0.0"
   }
 }
