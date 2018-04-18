@@ -10,8 +10,6 @@ type rule = [
 
 let empty: list(rule);
 
-let merge: list(list(rule)) => list(rule);
-
 let style: list(rule) => styleObject('style);
 
 let important: rule => rule;

@@ -41,8 +41,6 @@ type selector = [ | `selector(string, list(rule))];
 
 let empty = [];
 
-let merge = List.concat;
-
 type animation = string;
 
 let keyframes = frames => {
