@@ -43,14 +43,13 @@ let empty = [];
 
 type animation = string;
 
-let keyframes = frames => {
-  let addStop = (dict, (stop, rules)) => {
-    Js.Dict.set(dict, string_of_int(stop) ++ "%", makeDict(rules));
-    dict;
-  };
-  makeKeyFrames @@ List.fold_left(addStop, Js.Dict.empty(), frames);
-};
-
+/* let keyframes = frames => {
+     let addStop = (dict, (stop, rules)) => {
+       Js.Dict.set(dict, string_of_int(stop) ++ "%", makeDict(rules));
+       dict;
+     };
+     makeKeyFrames @@ List.fold_left(addStop, Js.Dict.empty(), frames);
+   }; */
 let style = rules => makeDict(rules) |> toStyleObject;
 
 let d = (property, value) => `declaration((property, value));
@@ -545,6 +544,8 @@ let em = x => `em(x);
 
 let ex = x => `ex(x);
 
+let fr = x => `fr(x);
+
 let mm = x => `mm(x);
 
 let pct = x => `percent(x);
@@ -622,6 +623,10 @@ let easeOut = `easeOut;
 let fixed = `fixed;
 
 let flexBox = `flex;
+
+let grid = `grid;
+
+let inlineGrid = `inlineGrid;
 
 let flexEnd = `flexEnd;
 
@@ -826,6 +831,8 @@ let display = x =>
     | `none => "none"
     | `flex => "flex"
     | `inlineFlex => "inline-flex"
+    | `grid => "grid"
+    | `inlineGrid => "inline-grid"
     },
   );
 
@@ -1011,6 +1018,38 @@ let height = x => d("height", string_of_dimension(x));
 let minHeight = x => d("minHeight", string_of_dimension(x));
 
 let maxHeight = x => d("maxHeight", string_of_dimension(x));
+
+let string_of_dimensions = dimensions =>
+  dimensions |> List.map(string_of_dimension) |> String.concat(" ");
+
+let gridTemplateColumns = dimensions =>
+  d("gridTemplateColumns", string_of_dimensions(dimensions));
+
+let gridTemplateRows = dimensions =>
+  d("gridTemplateRows", string_of_dimensions(dimensions));
+
+let gridAutoRows = dimensions =>
+  d("gridAutoRows", string_of_dimension(dimensions));
+
+let gridColumn = (start, end') =>
+  d("gridColumn", string_of_int(start) ++ " / " ++ string_of_int(end'));
+
+let gridRow = (start, end') =>
+  d("gridRow", string_of_int(start) ++ " / " ++ string_of_int(end'));
+
+let gridColumnStart = n => d("gridColumnStart", string_of_int(n));
+
+let gridColumnEnd = n => d("gridColumnEnd", string_of_int(n));
+
+let gridRowStart = n => d("gridRowStart", string_of_int(n));
+
+let gridRowEnd = n => d("gridRowEnd", string_of_int(n));
+
+let gridColumnGap = n => d("gridColumnGap", string_of_length(n));
+
+let gridRowGap = n => d("gridRowGap", string_of_length(n));
+
+let gridGap = n => d("gridGap", string_of_length(n));
 
 let string_of_align =
   fun

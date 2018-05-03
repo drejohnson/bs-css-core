@@ -1,7 +1,10 @@
 .*.swp
 .DS_Store
 /node_modules*
-/lib/
 npm-debug.log
+
+# bucklescript
+/lib
 .merlin
 .bsb.lock
+*.bs.js

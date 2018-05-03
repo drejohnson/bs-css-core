@@ -1,14 +1,23 @@
 {
   "name": "bs-css-core",
   "namespace": true,
+  "reason": {
+    "react-jsx": 2
+  },
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
   "refmt": 3,
-  "bs-dev-dependencies": ["bs-jest"],
+  "bs-dev-dependencies": ["reason-react", "bs-jest"],
   "sources": [
     {
       "dir": "src"
     },
     {
-      "dir": "__tests__",
+      "dir": "example",
+      "subdirs": true,
       "type": "dev"
     }
   ]

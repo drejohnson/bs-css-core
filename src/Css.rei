@@ -397,6 +397,8 @@ let em: float => [> | `em(float)];
 
 let ex: float => [> | `ex(float)];
 
+let fr: float => [> | `fr(float)];
+
 let mm: float => [> | `mm(float)];
 
 let pct: float => [> | `percent(float)];
@@ -479,6 +481,10 @@ let nowrap: [> | `nowrap];
 let wrapReverse: [> | `wrapReverse];
 
 let flexBox: [> | `flex];
+
+let grid: [> | `grid];
+
+let inlineGrid: [> | `inlineGrid];
 
 let block: [> | `block];
 
@@ -669,7 +675,17 @@ let unsafe: (string, string) => rule;
  * Layout
 */
 let display:
-  [ | `flex | `block | `inline | `inlineBlock | `none | `inlineFlex] => rule;
+  [
+    | `flex
+    | `block
+    | `inline
+    | `inlineBlock
+    | `none
+    | `inlineFlex
+    | `grid
+    | `inlineGrid
+  ] =>
+  rule;
 
 let position: [ | `absolute | `relative | `static | `fixed | `sticky] => rule;
 
@@ -704,6 +720,26 @@ let flexDirection: [ | `row | `column | `rowReverse | `columnReverse] => rule;
 let flexWrap: [ | `wrap | `nowrap | `wrapReverse] => rule;
 
 let order: int => rule;
+
+let gridTemplateColumns: list([ length | `auto]) => rule;
+
+let gridTemplateRows: list([ length | `auto]) => rule;
+
+let gridAutoRows: [ length | `auto] => rule;
+
+let gridColumnStart: int => rule;
+
+let gridColumnEnd: int => rule;
+
+let gridRowStart: int => rule;
+
+let gridRowEnd: int => rule;
+
+let gridColumnGap: length => rule;
+
+let gridRowGap: length => rule;
+
+let gridGap: length => rule;
 
 let width: [ length | `auto] => rule;
 
@@ -1121,8 +1157,7 @@ let transitionProperty: string => rule;
  */
 type animation;
 
-let keyframes: list((int, list(rule))) => animation;
-
+/* let keyframes: list((int, list(rule))) => animation; */
 type animationDirection = [
   | `normal
   | `reverse

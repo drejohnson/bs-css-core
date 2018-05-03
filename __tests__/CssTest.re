@@ -42,28 +42,28 @@ describe("style", () => {
 });
 
 describe("keyframe", () => {
-  let fadeIn =
-    Css.(
-      keyframes([
-        (0, [opacity(0.0)]),
-        (60, [opacity(1.0)]),
-        (100, [opacity(1.0)]),
-      ])
-    );
-  let bounce =
-    Css.(
-      keyframes([
-        (0, [transform(scale(0.1, 0.1))]),
-        (60, [transform(scale(1.2, 1.2))]),
-        (100, [transform(scale(1.0, 1.0))]),
-      ])
-    );
+  /* let fadeIn =
+       Css.(
+         keyframes([
+           (0, [opacity(0.0)]),
+           (60, [opacity(1.0)]),
+           (100, [opacity(1.0)]),
+         ])
+       );
+     let bounce =
+       Css.(
+         keyframes([
+           (0, [transform(scale(0.1, 0.1))]),
+           (60, [transform(scale(1.2, 1.2))]),
+           (100, [transform(scale(1.0, 1.0))]),
+         ])
+       ); */
   let stylesWithAnimation = _theme =>
     Css.(
       style([
-        animationName(bounce),
-        animationName(fadeIn),
-        animationDuration(2000),
+        /* animationName(bounce),
+           animationName(fadeIn),
+           animationDuration(2000), */
         width(px(50)),
         height(px(50)),
         backgroundColor(rgb(255, 0, 0)),
@@ -73,21 +73,21 @@ describe("keyframe", () => {
     test("stylesWithAnimation", () =>
       expect(stylesWithAnimation())
       |> toEqual({
-           "animationDuration": "2000ms",
-           "animationName": {
-             "0%": {
-               "opacity": "0",
-               "transform": "scale(0.1, 0.1)",
-             },
-             "100%": {
-               "opacity": "1",
-               "transform": "scale(1, 1)",
-             },
-             "60%": {
-               "opacity": "1",
-               "transform": "scale(1.2, 1.2)",
-             },
-           },
+           /* "animationDuration": "2000ms",
+              "animationName": {
+                "0%": {
+                  "opacity": "0",
+                  "transform": "scale(0.1, 0.1)",
+                },
+                "100%": {
+                  "opacity": "1",
+                  "transform": "scale(1, 1)",
+                },
+                "60%": {
+                  "opacity": "1",
+                  "transform": "scale(1.2, 1.2)",
+                },
+              }, */
            "backgroundColor": "rgb(255, 0, 0)",
            "height": "50px",
            "width": "50px",
